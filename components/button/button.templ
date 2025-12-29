@@ -1,0 +1,25 @@
+package button
+
+templ Button(p Props) {
+    if p.Href != "" {
+        <a
+            href={p.Href}
+            id={p.Base.ID}
+            class={p.Base.Class}     
+            {{ raw(p.RenderAttrsHTML()) }}   
+        >
+            { p.Content }            
+        </a>
+    } else {
+        <button
+            type={p.Type}
+            id={p.Base.ID}
+            class={p.Base.Class}     
+            disabled={p.Disabled}
+            {{ raw(p.RenderAttrsHTML()) }}   
+        >
+            { p.Content }
+        </button>
+    }
+}
+
