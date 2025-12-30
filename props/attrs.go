@@ -12,6 +12,12 @@ func NewAttrs() Attrs {
 	return Attrs{Attributes: templ.Attributes{}}
 }
 
+// With sets given key attribute
+func (a Attrs) With(key, val string) Attrs {
+	a.Attributes[key] = val
+	return a
+}
+
 // WithID sets the id attribute
 func (a Attrs) WithID(id string) Attrs {
 	a.Attributes["id"] = id

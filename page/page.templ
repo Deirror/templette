@@ -1,47 +1,51 @@
 package page
 
-templ Layout(p Props) {
-<!DOCTYPE html>
-<html {{ raw(p.HTML.Attrs.HTML()) }}>
-    @Head(p.Head)
-    @Body(p.Body)
-</html>
+templ Page(p PageProps) {
+    htmlAttrs := p.HTML.AsTemplAttrs()
+
+    <!DOCTYPE html>
+    <html { htmlAttrs... }>
+        @Head(p.Head)
+        @Body(p.Body)
+    </html>
 }
 
 templ Head(p HeadProps) {
 <head>
     <meta charset="utf-8" />
 
-    { for _, m := range p.Meta }
+    for _, m := range p.Meta {
         <meta name={m.Name} content={m.Content} />
-    { end }
+    }
 
     <title>{p.Title}</title>
 
-    { for _, css := range p.CSS }
+    for _, css := range p.CSS {
         <link rel="stylesheet" href={css} />
-    { end }
+    }
 
-    { for _, font := range p.Fonts }
+    for _, font := range p.Fonts {
         <link rel="stylesheet" href={font} />
-    { end }
+    }
 
-    { for _, icon := range p.Icons }
+    for _, icon := range p.Icons {
         <link rel="icon" href={icon} />
-    { end }
+    }
 
-    { for _, script := range p.Scripts }
+    for _, script := range p.Scripts {
         <script src={script}></script>
-    { end }
+    }
 
-    { if p.UseHTMX }
+    if p.UseHTMX {
         <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-    { end }
+    }
+    
 </head>
 }
 
 templ Body(b BodyProps) {
-<body {{ raw(b.Attrs.HTML()) }}>
-    { b.Children }  
-</body>
+    attrs := b.Attrs.AsTemplAttrs()
+    <body { attrs... }>
+        { children... }  
+    </body>
 }

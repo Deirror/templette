@@ -2,11 +2,16 @@ package page
 
 import (
 	"github.com/Deirror/templette/props"
+	"github.com/a-h/templ"
 )
 
 // HTMLProps represents attributes for the <html> tag
 type HTMLProps struct {
 	Attrs props.Attrs // lang, dir and etc.
+}
+
+func (p HTMLProps) AsTemplAttrs() templ.Attributes {
+	return p.Attrs.Attributes
 }
 
 // HeadProps represents <head> configuration
@@ -30,6 +35,10 @@ type MetaTag struct {
 type BodyProps struct {
 	Attrs props.Attrs
 	// Children []Component // all components rendered inside <body>
+}
+
+func (p BodyProps) AsTemplAttrs() templ.Attributes {
+	return p.Attrs.Attributes
 }
 
 // PageProps represents the entire page

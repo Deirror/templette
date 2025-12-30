@@ -1,12 +1,14 @@
 package button
 
 templ Button(p Props) {
+    attrs := p.AsTemplAttrs()
+
     if p.Href != "" {
-        <a {{ raw(p.AsAttrs().HTML()) }}>
+        <a { attrs... }>
             { children }
         </a>
     } else {
-        <button {{ raw(p.AsAttrs().HTML()) }}>
+        <button { attrs... }>
             { children }
         </button>
     }

@@ -1,26 +1,14 @@
 package props
 
-type AriaProps map[string]string
-
-func (a AriaProps) WithAttr(key, val string) AriaProps {
-	a[key] = val
-	return a
+type AriaProps struct {
+	Attrs
 }
 
-func (a AriaProps) Attrs() Attrs {
-	if len(a) == 0 {
-		return nil
-	}
+func NewAria() AriaProps {
+	return AriaProps{Attrs: NewAttrs()}
+}
 
-	attrs := Attrs{}
-	for k, v := range a {
-		// all aria- attributes must start with "aria-"
-		if len(k) > 0 && k[:5] != "aria-" {
-			attrs["aria-"+k] = v
-		} else {
-			attrs[k] = v
-		}
-	}
-
-	return attrs
+func (p AriaProps) With(key, val string) AriaProps {
+	p.Attributes["aria-"+key] = val
+	return p
 }

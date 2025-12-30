@@ -2,10 +2,11 @@ package button
 
 import (
 	"github.com/Deirror/templette/props"
+	"github.com/a-h/templ"
 )
 
 type Props struct {
-	props.Base
+	props.Attrs
 
 	Hx   *props.HxProps
 	Aria *props.AriaProps
@@ -16,21 +17,31 @@ type Props struct {
 	Type     string
 }
 
-func (p Props) AsAttrs() props.Attrs {
-	attrs := p.Base.Attrs.
-		Merge(p.Aria.Attrs()).
-		Merge(p.Hx.Attrs()).
-		Merge(p.Data.Attrs())
+func (p Props) AsTemplAttrs() templ.Attributes {
+	attrs := props.NewAttrs()
+
+	if p.Aria != nil {
+		attrs = attrs.Merge(p.Aria.Attrs)
+	}
+	if p.Hx != nil {
+		attrs = attrs.Merge(p.Hx.Attrs)
+	}
+	if p.Data != nil {
+		attrs = attrs.Merge(p.Data.Attrs)
+	}
 
 	if p.Disabled {
-		attrs = attrs.Merge(props.Attrs{"disabled": "disabled"})
+		attrs = attrs.Merge(props.NewAttrs().
+			With("disabled", "disabled"))
 	}
 	if p.Type != "" {
-		attrs = attrs.Merge(props.Attrs{"type": p.Type})
+		attrs = attrs.Merge(props.NewAttrs().
+			With("type", p.Type))
 	}
 	if p.Href != "" {
-		attrs = attrs.Merge(props.Attrs{"href": p.Href})
+		attrs = attrs.Merge(props.NewAttrs().
+			With("href", p.Href))
 	}
 
-	return attrs
+	return attrs.Attributes
 }
