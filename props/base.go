@@ -1,0 +1,38 @@
+package props
+
+import "github.com/a-h/templ"
+
+// Attrs wraps templ.Attributes and adds helper functions
+type Attrs struct {
+	templ.Attributes
+}
+
+// NewAttrs creates a new Attrs
+func NewAttrs() Attrs {
+	return Attrs{Attributes: templ.Attributes{}}
+}
+
+// WithID sets the id attribute
+func (a Attrs) WithID(id string) Attrs {
+	a.Attributes["id"] = id
+	return a
+}
+
+// WithClass sets or appends a class
+func (a Attrs) WithClass(class string) Attrs {
+	if existing, ok := a.Attributes["class"]; ok && existing != "" {
+		oldClass, _ := existing.(string)
+		a.Attributes["class"] = oldClass + " " + class
+	} else {
+		a.Attributes["class"] = class
+	}
+	return a
+}
+
+// Merge merges another Attrs into this one
+func (a Attrs) Merge(other Attrs) Attrs {
+	for k, v := range other.Attributes {
+		a.Attributes[k] = v
+	}
+	return a
+}
