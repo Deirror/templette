@@ -1,0 +1,56 @@
+/* Full-page flex centering */
+body {
+    margin: 0;
+    height: 100vh; /* full viewport height */
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    background: #f0f0f0;     /* optional background */
+}
+
+/* Button styles */
+.btn {
+    background: linear-gradient(135deg, #ff6b6b, #ff4757); /* warm gradient */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover glow effect */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Active press effect */
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: subtle shine animation */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(45deg) translate(-100%, -100%);
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.btn:hover::before {
+    transform: rotate(45deg) translate(0%, 0%);
+}
+

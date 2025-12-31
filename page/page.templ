@@ -1,12 +1,12 @@
 package page
 
 templ Page(p PageProps) {
-    htmlAttrs := p.HTML.AsTemplAttrs()
-
     <!DOCTYPE html>
-    <html { htmlAttrs... }>
+    <html { p.HTML.AsTemplAttrs()... }>
         @Head(p.Head)
-        @Body(p.Body)
+        @Body(p.Body) {
+            { children... }
+        }
     </html>
 }
 
@@ -43,9 +43,8 @@ templ Head(p HeadProps) {
 </head>
 }
 
-templ Body(b BodyProps) {
-    attrs := b.Attrs.AsTemplAttrs()
-    <body { attrs... }>
-        { children... }  
+templ Body(p BodyProps) {
+    <body { p.AsTemplAttrs()... }>
+        { children... }
     </body>
 }

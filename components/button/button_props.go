@@ -1,6 +1,7 @@
 package button
 
 import (
+	"github.com/Deirror/templette/components"
 	"github.com/Deirror/templette/props"
 	"github.com/a-h/templ"
 )
@@ -15,10 +16,14 @@ type Props struct {
 	Disabled bool
 	Href     string
 	Type     string
+
+	Children []components.Component
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs := props.NewAttrs()
+
+	attrs = attrs.Merge(p.Attrs)
 
 	if p.Aria != nil {
 		attrs = attrs.Merge(p.Aria.Attrs)
