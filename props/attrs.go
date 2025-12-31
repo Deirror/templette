@@ -12,8 +12,14 @@ func NewAttrs() Attrs {
 	return Attrs{Attributes: templ.Attributes{}}
 }
 
-// With sets given key attribute
+// With sets given key attribute with string val
 func (a Attrs) With(key, val string) Attrs {
+	a.Attributes[key] = val
+	return a
+}
+
+// WithBool sets given key attribute with bool val
+func (a Attrs) WithBool(key string, val bool) Attrs {
 	a.Attributes[key] = val
 	return a
 }

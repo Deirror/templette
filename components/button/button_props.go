@@ -1,7 +1,6 @@
 package button
 
 import (
-	"github.com/Deirror/templette/components"
 	"github.com/Deirror/templette/props"
 	"github.com/a-h/templ"
 )
@@ -16,8 +15,6 @@ type Props struct {
 	Disabled bool
 	Href     string
 	Type     string
-
-	Children []components.Component
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
@@ -37,7 +34,7 @@ func (p Props) AsTemplAttrs() templ.Attributes {
 
 	if p.Disabled {
 		attrs = attrs.Merge(props.NewAttrs().
-			With("disabled", "disabled"))
+			WithBool("disabled", true))
 	}
 	if p.Type != "" {
 		attrs = attrs.Merge(props.NewAttrs().

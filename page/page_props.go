@@ -1,7 +1,6 @@
 package page
 
 import (
-	"github.com/Deirror/templette/components"
 	"github.com/Deirror/templette/props"
 	"github.com/a-h/templ"
 )
@@ -35,7 +34,6 @@ type MetaTag struct {
 // BodyProps represents <body> configuration
 type BodyProps struct {
 	Attrs    props.Attrs
-	Children []components.Component
 }
 
 func (p BodyProps) AsTemplAttrs() templ.Attributes {
