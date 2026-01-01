@@ -1,6 +1,11 @@
 package page
 
-templ Page(p PageProps) {
+import (
+    "github.com/Deirror/templette/page/body"
+    "github.com/Deirror/templette/page/head"
+)
+
+templ Page(p Props) {
     <!DOCTYPE html>
     <html { p.HTML.AsTemplAttrs()... }>
         @Head(p.Head)
@@ -10,7 +15,7 @@ templ Page(p PageProps) {
     </html>
 }
 
-templ Head(p HeadProps) {
+templ Head(p head.Props) {
 <head>
     <meta charset="utf-8" />
 
@@ -43,7 +48,7 @@ templ Head(p HeadProps) {
 </head>
 }
 
-templ Body(p BodyProps) {
+templ Body(p body.Props) {
     <body { p.AsTemplAttrs()... }>
         { children... }
     </body>

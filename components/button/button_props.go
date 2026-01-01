@@ -34,7 +34,7 @@ func (p Props) AsTemplAttrs() templ.Attributes {
 
 	if p.Disabled {
 		attrs = attrs.Merge(props.NewAttrs().
-			WithBool("disabled", true))
+			With("disabled", ""))
 	}
 	if p.Type != "" {
 		attrs = attrs.Merge(props.NewAttrs().
@@ -45,5 +45,5 @@ func (p Props) AsTemplAttrs() templ.Attributes {
 			With("href", p.Href))
 	}
 
-	return attrs.Attributes
+	return attrs.AsTemplAttrs()
 }

@@ -18,12 +18,6 @@ func (a Attrs) With(key, val string) Attrs {
 	return a
 }
 
-// WithBool sets given key attribute with bool val
-func (a Attrs) WithBool(key string, val bool) Attrs {
-	a.Attributes[key] = val
-	return a
-}
-
 // WithID sets the id attribute
 func (a Attrs) WithID(id string) Attrs {
 	a.Attributes["id"] = id
@@ -47,4 +41,9 @@ func (a Attrs) Merge(other Attrs) Attrs {
 		a.Attributes[k] = v
 	}
 	return a
+}
+
+// Return templ attributes for html tags
+func (a Attrs) AsTemplAttrs() templ.Attributes {
+	return a.Attributes
 }
