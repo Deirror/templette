@@ -1,4 +1,4 @@
-package header
+package hr
 
 import (
 	"github.com/Deirror/templette/props"
@@ -12,4 +12,3 @@ type Props struct {
 func (p Props) AsTemplAttrs() templ.Attributes {
 	return p.Attrs.AsTemplAttrs()
 }
-

@@ -19,7 +19,6 @@ type Props struct {
 
 func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs := props.NewAttrs()
-
 	attrs = attrs.Merge(p.Attrs)
 
 	if p.Aria != nil {

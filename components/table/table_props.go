@@ -5,13 +5,14 @@ import (
 	"github.com/a-h/templ"
 )
 
-type TableProps struct {
+type Props struct {
 	props.Attrs
+
 	Aria *props.AriaProps
 	Data *props.DataProps
 }
 
-func (p TableProps) AsTemplAttrs() templ.Attributes {
+func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs := props.NewAttrs()
 	attrs = attrs.Merge(p.Attrs)
 

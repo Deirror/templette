@@ -1,9 +1,14 @@
 package body
 
-import "github.com/Deirror/templette/props"
+import (
+	"github.com/Deirror/templette/props"
+	"github.com/a-h/templ"
+)
 
-type Props = props.Attrs
+type Props struct {
+	props.Attrs
+}
 
-func NewBody() Props {
-	return props.NewAttrs()
+func (p Props) AsTemplAttrs() templ.Attributes {
+	return p.Attrs.AsTemplAttrs()
 }

@@ -7,6 +7,7 @@ import (
 
 type Props struct {
 	props.Attrs
+
 	Src string
 	Alt string
 }
