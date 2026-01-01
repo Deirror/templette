@@ -2,6 +2,14 @@ package toaster
 
 templ Toast(p Props) {
 	<div { p.AsTemplAttrs()... }>
+        <button
+			type="button"
+			class="toast-close"
+			aria-label="Close"
+			hx-swap="delete">
+			×
+		</button>
+
 		if p.Title != "" {
 			<div class="toast-title">
 				{ p.Title }
