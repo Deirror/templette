@@ -1,0 +1,37 @@
+package table
+
+templ Table(p Props) {
+    <table { p.AsTemplAttrs()... }>
+        { children... }
+    </table>
+}
+
+templ Body() {
+    <tbody>
+        { children... }
+    </tbody>
+}
+
+templ Th() {
+    <th>
+        { children... }
+    </th>
+}
+
+templ Td() {
+    <td>
+        { children... }
+    </td>
+}
+
+templ Head() {
+    <thead>
+        { children... }
+    </thead>
+}
+
+templ Row() {
+    <tr>
+        { children... }
+    </tr>
+}

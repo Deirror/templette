@@ -1,0 +1,8 @@
+package textarea
+
+templ Textarea(p Props) {
+    <textarea { p.AsTemplAttrs()... }>
+        { children... }
+    </textarea>
+}
+

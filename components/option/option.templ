@@ -1,0 +1,8 @@
+package option
+
+templ Option(p Props) {
+    <option { p.AsTemplAttrs()... }>
+        { children... }
+    </option>
+}
+

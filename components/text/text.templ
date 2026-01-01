@@ -1,0 +1,110 @@
+package text
+
+templ P(p Props) {
+    <p { p.AsTemplAttrs()... }>
+        { children... }
+    </p>
+}
+
+templ H1(p Props) { <h1 { p.AsTemplAttrs()... }>{ children... }</h1> }
+templ H2(p Props) { <h2 { p.AsTemplAttrs()... }>{ children... }</h2> }
+templ H3(p Props) { <h3 { p.AsTemplAttrs()... }>{ children... }</h3> }
+templ H4(p Props) { <h4 { p.AsTemplAttrs()... }>{ children... }</h4> }
+templ H5(p Props) { <h5 { p.AsTemplAttrs()... }>{ children... }</h5> }
+templ H6(p Props) { <h6 { p.AsTemplAttrs()... }>{ children... }</h6> }
+
+templ Span(p Props) {
+    <span { p.AsTemplAttrs()... }>
+        { children... }
+    </span>
+}
+
+templ Pre(p Props) {
+    <pre { p.AsTemplAttrs()... }>
+        { children... }
+    </pre>
+}
+
+templ Code(p Props) {
+    <code { p.AsTemplAttrs()... }>
+        { children... }
+    </code>
+}
+
+templ Blockquote(p Props) {
+    <blockquote { p.AsTemplAttrs()... }>
+        { children... }
+    </blockquote>
+}
+
+templ Ul(p Props) {
+    <ul { p.AsTemplAttrs()... }>
+        { children... }
+    </ul>
+}
+
+templ Ol(p Props) {
+    <ol { p.AsTemplAttrs()... }>
+        { children... }
+    </ol>
+}
+
+templ Li(p Props) {
+    <li { p.AsTemplAttrs()... }>
+        { children... }
+    </li>
+}
+
+templ Dl(p Props) {
+    <dl { p.AsTemplAttrs()... }>
+        { children... }
+    </dl>
+}
+
+templ Dt(p Props) {
+    <dt { p.AsTemplAttrs()... }>
+        { children... }
+    </dt>
+}
+
+templ Dd(p Props) {
+    <dd { p.AsTemplAttrs()... }>
+        { children... }
+    </dd>
+}
+
+templ Strong(p Props) {
+    <strong { p.AsTemplAttrs()... }>
+        { children... }
+    </strong>
+}
+
+templ B(p Props) {
+    <b { p.AsTemplAttrs()... }>
+        { children... }
+    </b>
+}
+
+templ Em(p Props) {
+    <em { p.AsTemplAttrs()... }>
+        { children... }
+    </em>
+}
+
+templ I(p Props) {
+    <i { p.AsTemplAttrs()... }>
+        { children... }
+    </i>
+}
+
+templ Small(p Props) {
+    <small { p.AsTemplAttrs()... }>
+        { children... }
+    </small>
+}
+
+templ Mark(p Props) {
+    <mark { p.AsTemplAttrs()... }>
+        { children... }
+    </mark>
+}
