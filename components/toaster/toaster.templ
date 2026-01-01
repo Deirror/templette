@@ -1,0 +1,20 @@
+package toaster
+
+templ Toast(p Props) {
+	<div { p.AsTemplAttrs()... }>
+		if p.Title != "" {
+			<div class="toast-title">
+				{ p.Title }
+			</div>
+		}
+
+		<div class="toast-body">
+			if p.Message != "" {
+				{ p.Message }
+			} else {
+				{ children... }
+			}
+		</div>
+	</div>
+}
+
