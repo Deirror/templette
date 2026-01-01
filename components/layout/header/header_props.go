@@ -5,3 +5,7 @@ import (
 )
 
 type Props = props.Attrs
+
+func NewHeader() Props {
+	return props.NewAttrs()
+}
