@@ -1,6 +1,7 @@
 package field
 
 import (
+	"github.com/Deirror/templette/components/label"
 	"github.com/Deirror/templette/props"
 	"github.com/a-h/templ"
 )
@@ -11,7 +12,8 @@ type Props struct {
 	Aria *props.AriaProps
 	Data *props.DataProps
 
-	Label string
+	Label label.Props
+	Text  string
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
@@ -23,11 +25,6 @@ func (p Props) AsTemplAttrs() templ.Attributes {
 	}
 	if p.Data != nil {
 		attrs = attrs.Merge(p.Data.Attrs)
-	}
-
-	if p.Label != "" {
-		attrs = attrs.Merge(props.NewAttrs().
-			With("aria-label", p.Label))
 	}
 
 	return attrs.AsTemplAttrs()
