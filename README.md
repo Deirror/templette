@@ -8,7 +8,7 @@ Conveniet and aimed at ease of use front-end UI toolkit, using Go's HTML templat
 Consists of three parts:
 - `props` - defines ids, classes and other attrs for the given template
 - `page` - website layout
-- `components` - directly compiled templ Go files ready to use. Contains most used html tags like <div>, <text>, <p> and many, many other
+- `components` - directly compiled templ Go files ready to use. Contains most used html tags like `div`, `text`, `p` and many, many other
 
 The idea is that the developer can directly write `.templ` using the ready templ funcs and define props like htmx, data, aria and others
 
