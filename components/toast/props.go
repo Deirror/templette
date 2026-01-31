@@ -1,4 +1,4 @@
-package toaster
+package toast
 
 import (
 	"github.com/Deirror/templette/props"
