@@ -1,8 +1,13 @@
 package select_
 
-templ Select(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Select(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <select { p.AsTemplAttrs()... }>
         { children... }
     </select>
 }
-

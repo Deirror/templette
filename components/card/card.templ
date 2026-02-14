@@ -1,8 +1,13 @@
 package card
 
-templ Card(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Card(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <div { p.AsTemplAttrs()... }>
         { children... }
     </div>
 }
-

@@ -1,8 +1,15 @@
 package summary
 
-templ Summary(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Summary(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <summary { p.AsTemplAttrs()... }>
         { children... }
     </summary>
 }
+
 

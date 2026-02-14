@@ -3,13 +3,16 @@ package card
 import (
 	"github.com/Deirror/templette/props"
 	"github.com/a-h/templ"
+
+	"github.com/Deirror/templette/props/aria"
+	"github.com/Deirror/templette/props/data"
 )
 
 type Props struct {
 	props.Attrs
 
-	Aria props.AriaProps
-	Data props.DataProps
+	Aria aria.Props
+	Data data.Props
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {

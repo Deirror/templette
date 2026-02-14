@@ -1,7 +1,14 @@
 package figure
 
-templ Figure(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Figure(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <figure { p.AsTemplAttrs()... }>
         { children... }
     </figure>
 }
+

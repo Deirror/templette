@@ -1,37 +1,53 @@
 package table
 
-templ Table(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Table(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <table { p.AsTemplAttrs()... }>
         { children... }
     </table>
 }
 
-templ Body() {
-    <tbody>
+templ Body(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
+    <tbody { p.AsTemplAttrs()... }>
         { children... }
     </tbody>
 }
 
-templ Th() {
-    <th>
+templ Th(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
+    <th  { p.AsTemplAttrs()... }>
         { children... }
     </th>
 }
 
-templ Td() {
-    <td>
+templ Td(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
+    <td { p.AsTemplAttrs()... }>
         { children... }
     </td>
 }
 
-templ Head() {
-    <thead>
+templ Head(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
+    <thead { p.AsTemplAttrs()... }>
         { children... }
     </thead>
 }
 
-templ Row() {
-    <tr>
+templ Row(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
+    <tr { p.AsTemplAttrs()... }>
         { children... }
     </tr>
 }

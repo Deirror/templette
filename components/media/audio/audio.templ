@@ -1,8 +1,15 @@
 package audio
 
-templ Audio(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Audio(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <audio { p.AsTemplAttrs()... }>
         { children... } 
     </audio>
 }
+
 

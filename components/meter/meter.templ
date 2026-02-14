@@ -1,8 +1,15 @@
 package meter
 
-templ Meter(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Meter(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <meter { p.AsTemplAttrs()... }>
         { children... } 
     </meter>
 }
+
 

@@ -1,6 +1,13 @@
 package hr
 
-templ Hr(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Hr(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <hr { p.AsTemplAttrs()... } />
 }
+
 

@@ -1,6 +1,13 @@
 package img
 
-templ Img(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Img(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <img { p.AsTemplAttrs()... } />
 }
+
 

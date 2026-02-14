@@ -1,7 +1,14 @@
 package mainer // Renamed due to 'main' being reserved
 
-templ Main(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Main(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <main { p.AsTemplAttrs()... }>
         { children... }
     </main> 
 }
+

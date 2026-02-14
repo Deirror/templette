@@ -1,7 +1,14 @@
 package header
 
-templ Header(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Header(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <header { p.AsTemplAttrs()... }>
         { children... }
     </header> 
 }
+

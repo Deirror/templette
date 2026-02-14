@@ -1,7 +1,14 @@
 package details
 
-templ Details(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Details(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <details { p.AsTemplAttrs()... }>
         { children... }
     </details>
 }
+

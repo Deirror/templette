@@ -1,7 +1,14 @@
 package footer
 
-templ Footer(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Footer(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <footer { p.AsTemplAttrs()... }>
         { children... }
     </footer> 
 }
+

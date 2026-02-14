@@ -1,8 +1,13 @@
 package form
 
-templ Form(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Form(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <form { p.AsTemplAttrs()... }>
         { children... }
     </form>
 }
-

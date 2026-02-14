@@ -1,8 +1,15 @@
 package article
 
-templ Article(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Article(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <article { p.AsTemplAttrs()... }>
         { children... }
     </article>
 }
+
 

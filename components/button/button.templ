@@ -1,6 +1,12 @@
 package button
 
-templ Button(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Button(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     if p.Href != "" {
         <a { p.AsTemplAttrs()... }>
             { children... }
@@ -11,4 +17,3 @@ templ Button(p Props) {
         </button>
     }
 }
-

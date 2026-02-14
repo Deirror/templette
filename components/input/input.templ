@@ -1,6 +1,11 @@
 package input
 
-templ Input(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Input(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <input { p.AsTemplAttrs()... } />
 }
-

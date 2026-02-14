@@ -1,8 +1,15 @@
 package nav
 
-templ Nav(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Nav(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <nav { p.AsTemplAttrs()... }>
         { children... }
     </nav>
 }
+
 

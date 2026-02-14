@@ -5,14 +5,18 @@ import (
 
 	"github.com/Deirror/templette/props"
 	"github.com/a-h/templ"
+
+	"github.com/Deirror/templette/props/aria"
+	"github.com/Deirror/templette/props/data"
+	"github.com/Deirror/templette/props/htmx"
 )
 
 type Props struct {
 	props.Attrs
 
-	Hx   props.HxProps
-	Aria props.AriaProps
-	Data props.DataProps
+	Hx   htmx.Props
+	Aria aria.Props
+	Data data.Props
 
 	Name        string
 	Placeholder string

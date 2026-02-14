@@ -1,8 +1,15 @@
 package progress
 
-templ Progress(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Progress(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <progress { p.AsTemplAttrs()... }>
         { children... } 
     </progress>
 }
+
 

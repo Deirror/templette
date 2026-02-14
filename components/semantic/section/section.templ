@@ -1,7 +1,14 @@
 package section
 
-templ Section(p Props) {
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Section(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
     <section { p.AsTemplAttrs()... }>
         { children... }
     </section>
 }
+
