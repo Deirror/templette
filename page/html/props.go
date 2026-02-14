@@ -7,8 +7,21 @@ import (
 
 type Props struct {
 	props.Attrs
+
+	Aria *props.AriaProps
+	Data *props.DataProps
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	return p.Attrs.AsTemplAttrs()
+	attrs := props.NewAttrs()
+	attrs = attrs.Merge(p.Attrs)
+
+	if p.Aria != nil {
+		attrs = attrs.Merge(p.Aria.Attrs)
+	}
+	if p.Data != nil {
+		attrs = attrs.Merge(p.Data.Attrs)
+	}
+
+	return attrs.AsTemplAttrs()
 }
