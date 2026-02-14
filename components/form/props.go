@@ -8,9 +8,9 @@ import (
 type Props struct {
 	props.Attrs
 
-	Hx   *props.HxProps
-	Aria *props.AriaProps
-	Data *props.DataProps
+	Hx   props.HxProps
+	Aria props.AriaProps
+	Data props.DataProps
 
 	Action  string
 	Method  string
@@ -20,37 +20,32 @@ type Props struct {
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.NewAttrs()
+	attrs := props.Attrs{}
+
 	attrs = attrs.Merge(p.Attrs)
 
-	if p.Hx != nil {
-		attrs = attrs.Merge(p.Hx.Attrs)
-	}
-	if p.Aria != nil {
-		attrs = attrs.Merge(p.Aria.Attrs)
-	}
-	if p.Data != nil {
-		attrs = attrs.Merge(p.Data.Attrs)
-	}
+	attrs = attrs.Merge(p.Hx.Attrs)
+	attrs = attrs.Merge(p.Aria.Attrs)
+	attrs = attrs.Merge(p.Data.Attrs)
 
 	if p.Action != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("action", p.Action))
+		attrs = attrs.Merge(props.Attrs{}.With("action", p.Action))
 	}
 
 	if p.Method != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("method", p.Method))
+		attrs = attrs.Merge(props.Attrs{}.With("method", p.Method))
 	}
 
 	if p.EncType != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("enctype", p.EncType))
+		attrs = attrs.Merge(props.Attrs{}.With("enctype", p.EncType))
 	}
 
 	if p.Target != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("target", p.Target))
+		attrs = attrs.Merge(props.Attrs{}.With("target", p.Target))
 	}
 
 	if p.NoValid {
-		attrs = attrs.Merge(props.NewAttrs().With("novalidate", ""))
+		attrs = attrs.Merge(props.Attrs{}.With("novalidate", ""))
 	}
 
 	return attrs.AsTemplAttrs()

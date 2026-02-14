@@ -20,23 +20,23 @@ type Props struct {
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.NewAttrs().Merge(p.Attrs)
-	attrs = attrs.Merge(props.NewAttrs().
+	attrs := props.Attrs{}.Merge(p.Attrs)
+	attrs = attrs.Merge(props.Attrs{}.
 		With("value", fmt.Sprintf("%g", p.Value)).
 		With("min", fmt.Sprintf("%g", p.Min)).
 		With("max", fmt.Sprintf("%g", p.Max)))
 
 	if p.Low != 0 {
-		attrs = attrs.Merge(props.NewAttrs().With("low", fmt.Sprintf("%g", p.Low)))
+		attrs = attrs.Merge(props.Attrs{}.With("low", fmt.Sprintf("%g", p.Low)))
 	}
 	if p.High != 0 {
-		attrs = attrs.Merge(props.NewAttrs().With("high", fmt.Sprintf("%g", p.High)))
+		attrs = attrs.Merge(props.Attrs{}.With("high", fmt.Sprintf("%g", p.High)))
 	}
 	if p.Opt != 0 {
-		attrs = attrs.Merge(props.NewAttrs().With("optimum", fmt.Sprintf("%g", p.Opt)))
+		attrs = attrs.Merge(props.Attrs{}.With("optimum", fmt.Sprintf("%g", p.Opt)))
 	}
 	if p.Label != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("aria-label", p.Label))
+		attrs = attrs.Merge(props.Attrs{}.With("aria-label", p.Label))
 	}
 
 	return attrs.AsTemplAttrs()

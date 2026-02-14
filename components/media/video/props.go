@@ -15,18 +15,18 @@ type Props struct {
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.NewAttrs().Merge(p.Attrs)
+	attrs := props.Attrs{}.Merge(p.Attrs)
 	if p.Src != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("src", p.Src))
+		attrs = attrs.Merge(props.Attrs{}.With("src", p.Src))
 	}
 	if p.Controls {
-		attrs = attrs.Merge(props.NewAttrs().With("controls", ""))
+		attrs = attrs.Merge(props.Attrs{}.With("controls", ""))
 	}
 	if p.Autoplay {
-		attrs = attrs.Merge(props.NewAttrs().With("autoplay", ""))
+		attrs = attrs.Merge(props.Attrs{}.With("autoplay", ""))
 	}
 	if p.Loop {
-		attrs = attrs.Merge(props.NewAttrs().With("loop", ""))
+		attrs = attrs.Merge(props.Attrs{}.With("loop", ""))
 	}
 	return attrs.AsTemplAttrs()
 }

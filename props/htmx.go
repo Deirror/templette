@@ -4,12 +4,6 @@ type HxProps struct {
 	Attrs
 }
 
-func NewHx() HxProps {
-	return HxProps{
-		Attrs: NewAttrs(),
-	}
-}
-
 func (h HxProps) WithGet(url string) HxProps {
 	return h.withRequest("hx-get", url)
 }
@@ -31,32 +25,32 @@ func (h HxProps) WithDelete(url string) HxProps {
 }
 
 func (h HxProps) WithTarget(sel string) HxProps {
-	h.Attributes["hx-target"] = sel
+	h.Attrs.With("hx-target", sel)
 	return h
 }
 
 func (h HxProps) WithTrigger(trigger string) HxProps {
-	h.Attributes["hx-trigger"] = trigger
+	h.Attrs.With("hx-trigger", trigger)
 	return h
 }
 
 func (h HxProps) WithSwap(swap string) HxProps {
-	h.Attributes["hx-swap"] = swap
+	h.Attrs.With("hx-swap", swap)
 	return h
 }
 
 func (h HxProps) WithConfirm(msg string) HxProps {
-	h.Attributes["hx-confirm"] = msg
+	h.Attrs.With("hx-confirm", msg)
 	return h
 }
 
 func (h HxProps) WithInclude(sel string) HxProps {
-	h.Attributes["hx-include"] = sel
+	h.Attrs.With("hx-include", sel)
 	return h
 }
 
 func (h HxProps) WithIndicator(sel string) HxProps {
-	h.Attributes["hx-indicator"] = sel
+	h.Attrs.With("hx-indicator", sel)
 	return h
 }
 
@@ -70,6 +64,6 @@ func (h HxProps) clearRequest() {
 
 func (h HxProps) withRequest(method, url string) HxProps {
 	h.clearRequest()
-	h.Attributes[method] = url
+	h.Attrs.With(method, url)
 	return h
 }

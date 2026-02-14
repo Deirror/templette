@@ -16,13 +16,13 @@ type Props struct {
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.NewAttrs().Merge(p.Attrs)
-	attrs = attrs.Merge(props.NewAttrs().
+	attrs := props.Attrs{}.Merge(p.Attrs)
+	attrs = attrs.Merge(props.Attrs{}.
 		With("value", fmt.Sprintf("%g", p.Value)).
 		With("max", fmt.Sprintf("%g", p.Max)))
 
 	if p.Label != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("aria-label", p.Label))
+		attrs = attrs.Merge(props.Attrs{}.With("aria-label", p.Label))
 	}
 
 	return attrs.AsTemplAttrs()

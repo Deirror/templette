@@ -14,17 +14,17 @@ type Props struct {
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.NewAttrs()
+	attrs := props.Attrs{}
 	attrs = attrs.Merge(p.Attrs)
 
 	if p.Value != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("value", p.Value))
+		attrs = attrs.Merge(props.Attrs{}.With("value", p.Value))
 	}
 	if p.Selected {
-		attrs = attrs.Merge(props.NewAttrs().With("selected", ""))
+		attrs = attrs.Merge(props.Attrs{}.With("selected", ""))
 	}
 	if p.Disabled {
-		attrs = attrs.Merge(props.NewAttrs().With("disabled", ""))
+		attrs = attrs.Merge(props.Attrs{}.With("disabled", ""))
 	}
 
 	return attrs.AsTemplAttrs()

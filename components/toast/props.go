@@ -23,13 +23,13 @@ type Props struct {
 	Message string       // main content (fallback if children empty)
 	Timeout time.Duration // auto-dismiss (0 = persistent)
 
-	Hx   *props.HxProps
-	Aria *props.AriaProps
-	Data *props.DataProps
+	Hx   props.HxProps
+	Aria props.AriaProps
+	Data props.DataProps
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.NewAttrs().
+	attrs := props.Attrs{}.
 		WithClass("toast").
 		WithClass("toast--" + string(p.Variant))
 
@@ -43,15 +43,9 @@ func (p Props) AsTemplAttrs() templ.Attributes {
 		)
 	}
 
-	if p.Aria != nil {
-		attrs = attrs.Merge(p.Aria.Attrs)
-	}
-	if p.Hx != nil {
-		attrs = attrs.Merge(p.Hx.Attrs)
-	}
-	if p.Data != nil {
-		attrs = attrs.Merge(p.Data.Attrs)
-	}
+	attrs = attrs.Merge(p.Aria.Attrs)
+	attrs = attrs.Merge(p.Hx.Attrs)
+	attrs = attrs.Merge(p.Data.Attrs)
 
 	return attrs.AsTemplAttrs()
 }

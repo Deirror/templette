@@ -13,12 +13,12 @@ type Props struct {
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.NewAttrs().Merge(p.Attrs)
+	attrs := props.Attrs{}.Merge(p.Attrs)
 	if p.Src != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("src", p.Src))
+		attrs = attrs.Merge(props.Attrs{}.With("src", p.Src))
 	}
 	if p.Alt != "" {
-		attrs = attrs.Merge(props.NewAttrs().With("alt", p.Alt))
+		attrs = attrs.Merge(props.Attrs{}.With("alt", p.Alt))
 	}
 	return attrs.AsTemplAttrs()
 }

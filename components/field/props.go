@@ -9,23 +9,19 @@ import (
 type Props struct {
 	props.Attrs
 
-	Aria *props.AriaProps
-	Data *props.DataProps
+	Aria props.AriaProps
+	Data props.DataProps
 
 	Label label.Props
 	Text  string
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.NewAttrs()
-	attrs = attrs.Merge(p.Attrs)
+	attrs := props.Attrs{}
 
-	if p.Aria != nil {
-		attrs = attrs.Merge(p.Aria.Attrs)
-	}
-	if p.Data != nil {
-		attrs = attrs.Merge(p.Data.Attrs)
-	}
+	attrs = attrs.Merge(p.Attrs)
+	attrs = attrs.Merge(p.Aria.Attrs)
+	attrs = attrs.Merge(p.Data.Attrs)
 
 	return attrs.AsTemplAttrs()
 }
