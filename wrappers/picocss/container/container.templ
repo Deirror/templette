@@ -2,10 +2,17 @@ package container
 
 import (
     "github.com/Deirror/templette/components/card"
+    "github.com/Deirror/templette/components/semantic/nav"
 )
 
-templ Container() {
+templ ContainerCard() {
     @card.Card(p) {
+        { children... }
+    }
+}
+
+templ ContainerNav() {
+    @nav.Nav(p) {
         { children... }
     }
 }
