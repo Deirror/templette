@@ -39,6 +39,23 @@ func (a Attrs) WithID(id string) Attrs {
 	return a
 }
 
+// WithStyle sets or appends a style attribute
+func (a Attrs) WithStyle(style string) Attrs {
+    if a.Attributes == nil {
+        a.Attributes = templ.Attributes{}
+    }
+
+    if existing, ok := a.Attributes["style"]; ok && existing != "" {
+        oldStyle, _ := existing.(string)
+        // append new style with a semicolon separator
+        a.Attributes["style"] = oldStyle + "; " + style
+    } else {
+        a.Attributes["style"] = style
+    }
+
+    return a
+}
+
 // WithClass sets or appends a class
 func (a Attrs) WithClass(class string) Attrs {
 	if a.Attributes == nil {
