@@ -1,60 +1,64 @@
-package props
+package htmx
 
-type HxProps struct {
-	Attrs
+import (
+	"github.com/Deirror/templette/props"
+)
+
+type Props struct {
+	props.Attrs
 }
 
-func (h HxProps) WithGet(url string) HxProps {
+func (h Props) WithGet(url string) Props {
 	return h.withRequest("hx-get", url)
 }
 
-func (h HxProps) WithPost(url string) HxProps {
+func (h Props) WithPost(url string) Props {
 	return h.withRequest("hx-post", url)
 }
 
-func (h HxProps) WithPut(url string) HxProps {
+func (h Props) WithPut(url string) Props {
 	return h.withRequest("hx-put", url)
 }
 
-func (h HxProps) WithPatch(url string) HxProps {
+func (h Props) WithPatch(url string) Props {
 	return h.withRequest("hx-patch", url)
 }
 
-func (h HxProps) WithDelete(url string) HxProps {
+func (h Props) WithDelete(url string) Props {
 	return h.withRequest("hx-delete", url)
 }
 
-func (h HxProps) WithTarget(sel string) HxProps {
+func (h Props) WithTarget(sel string) Props {
 	h.Attrs.With("hx-target", sel)
 	return h
 }
 
-func (h HxProps) WithTrigger(trigger string) HxProps {
+func (h Props) WithTrigger(trigger string) Props {
 	h.Attrs.With("hx-trigger", trigger)
 	return h
 }
 
-func (h HxProps) WithSwap(swap string) HxProps {
+func (h Props) WithSwap(swap string) Props {
 	h.Attrs.With("hx-swap", swap)
 	return h
 }
 
-func (h HxProps) WithConfirm(msg string) HxProps {
+func (h Props) WithConfirm(msg string) Props {
 	h.Attrs.With("hx-confirm", msg)
 	return h
 }
 
-func (h HxProps) WithInclude(sel string) HxProps {
+func (h Props) WithInclude(sel string) Props {
 	h.Attrs.With("hx-include", sel)
 	return h
 }
 
-func (h HxProps) WithIndicator(sel string) HxProps {
+func (h Props) WithIndicator(sel string) Props {
 	h.Attrs.With("hx-indicator", sel)
 	return h
 }
 
-func (h HxProps) clearRequest() {
+func (h Props) clearRequest() {
 	delete(h.Attributes, "hx-get")
 	delete(h.Attributes, "hx-post")
 	delete(h.Attributes, "hx-put")
@@ -62,7 +66,7 @@ func (h HxProps) clearRequest() {
 	delete(h.Attributes, "hx-delete")
 }
 
-func (h HxProps) withRequest(method, url string) HxProps {
+func (h Props) withRequest(method, url string) Props {
 	h.clearRequest()
 	h.Attrs.With(method, url)
 	return h

@@ -1,6 +1,10 @@
 package props
 
-import "github.com/a-h/templ"
+import (
+	"maps"
+
+	"github.com/a-h/templ"
+)
 
 // Attrs wraps templ.Attributes and adds helper functions
 // With pattern is used for literal chaining, since the structs are small
@@ -22,9 +26,7 @@ func (a Attrs) Merge(other Attrs) Attrs {
 	if a.Attributes == nil {
 		a.Attributes = templ.Attributes{}
 	}
-	for k, v := range other.Attributes {
-		a.Attributes[k] = v
-	}
+	maps.Copy(a.Attributes, other.Attributes)
 	return a
 }
 
