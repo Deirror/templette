@@ -1,0 +1,11 @@
+package group
+
+import (
+	"github.com/Deirror/templette/components/fieldset"
+)
+
+templ GroupFieldset() {
+    @fieldset.Fieldset(p) {
+        { children... }
+    }
+}

@@ -1,0 +1,13 @@
+package fieldset
+
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Fieldset(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
+    <fieldset { p.AsTemplAttrs()... }>
+        { children... }
+    </fieldset>
+}
