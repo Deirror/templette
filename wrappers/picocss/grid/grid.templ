@@ -2,10 +2,17 @@ package grid
 
 import (
     "github.com/Deirror/templette/components/card"
+    "github.com/Deirror/templette/components/semantic/nav"
 )
 
-templ Grid() {
-    @card.Card(p) {
+templ GridCard() {
+    @card.Card(pCard) {
+        { children... }
+    }
+}
+
+templ GridNav() {
+    @nav.Nav(pNav) {
         { children... }
     }
 }
