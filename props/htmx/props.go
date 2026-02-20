@@ -29,32 +29,32 @@ func (h Props) WithDelete(url string) Props {
 }
 
 func (h Props) WithTarget(sel string) Props {
-	h.Attrs.With("hx-target", sel)
+	h.Attrs = h.Attrs.With("hx-target", sel)
 	return h
 }
 
 func (h Props) WithTrigger(trigger string) Props {
-	h.Attrs.With("hx-trigger", trigger)
+	h.Attrs = h.Attrs.With("hx-trigger", trigger)
 	return h
 }
 
 func (h Props) WithSwap(swap string) Props {
-	h.Attrs.With("hx-swap", swap)
+	h.Attrs = h.Attrs.With("hx-swap", swap)
 	return h
 }
 
 func (h Props) WithConfirm(msg string) Props {
-	h.Attrs.With("hx-confirm", msg)
+	h.Attrs = h.Attrs.With("hx-confirm", msg)
 	return h
 }
 
 func (h Props) WithInclude(sel string) Props {
-	h.Attrs.With("hx-include", sel)
+	h.Attrs = h.Attrs.With("hx-include", sel)
 	return h
 }
 
 func (h Props) WithIndicator(sel string) Props {
-	h.Attrs.With("hx-indicator", sel)
+	h.Attrs = h.Attrs.With("hx-indicator", sel)
 	return h
 }
 
@@ -68,6 +68,6 @@ func (h Props) clearRequest() {
 
 func (h Props) withRequest(method, url string) Props {
 	h.clearRequest()
-	h.Attrs.With(method, url)
+	h.Attrs = h.Attrs.With(method, url)
 	return h
 }

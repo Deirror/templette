@@ -9,6 +9,6 @@ type Props struct {
 }
 
 func (p Props) With(key, val string) Props {
-	p.Attrs.With("data-"+key, val)
+	p.Attrs = p.Attrs.With("data-"+key, val)
 	return p
 }
