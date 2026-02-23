@@ -47,6 +47,10 @@ templ Head(props ...head.Props) {
             <script src={script}></script>
         }
 
+        for _, script := range p.ScriptsDefer {
+            <script src={script} defer></script>
+        }
+
         if p.UseHTMX {
             <script src="https://unpkg.com/htmx.org@1.9.12"></script>
         }
