@@ -8,6 +8,11 @@ type Props struct {
 	props.Attrs
 }
 
+func (h Props) With(key, val string) Props {
+	h.Attrs = h.Attrs.With("hx-" + key, val)
+	return h
+}
+
 func (h Props) WithGet(url string) Props {
 	return h.withRequest("hx-get", url)
 }
