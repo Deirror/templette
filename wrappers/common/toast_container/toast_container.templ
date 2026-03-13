@@ -1,0 +1,11 @@
+package toast_container
+
+import (
+    "github.com/Deirror/templette/components/card"
+)
+
+templ ToastContainer() {
+    @card.Card(p) {
+        { children... }
+    }
+}
