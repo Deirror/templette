@@ -1,0 +1,14 @@
+package canvas
+
+import ( 
+    propsx "github.com/Deirror/templette/props"
+)
+
+templ Canvas(props ...Props) {
+    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+
+    <canvas { p.AsTemplAttrs()... }>
+        { children... } 
+    </canvas>
+}
+
