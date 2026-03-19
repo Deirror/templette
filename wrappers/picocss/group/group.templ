@@ -2,10 +2,17 @@ package group
 
 import (
 	"github.com/Deirror/templette/components/fieldset"
+	"github.com/Deirror/templette/components/card"
 )
 
 templ GroupFieldset() {
-    @fieldset.Fieldset(p) {
+    @fieldset.Fieldset(fieldsetProps) {
+        { children... }
+    }
+}
+
+templ GroupCard() {
+    @card.Card(cardProps) {
         { children... }
     }
 }
