@@ -5,6 +5,10 @@ import (
 	"github.com/Deirror/templette/props"
 )
 
-var cardProps card.Props = card.Props{
+var darkProps card.Props = card.Props{
 	Attrs: props.Attrs{}.WithClass("dark-overlay"),
+}
+
+var softDarkProps card.Props = card.Props{
+	Attrs: props.Attrs{}.WithClass("soft-dark-overlay"),
 }

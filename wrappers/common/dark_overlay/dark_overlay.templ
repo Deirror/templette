@@ -5,7 +5,13 @@ import (
 )
 
 templ DarkOverlayCard() {
-    @card.Card(cardProps) {
+    @card.Card(darkProps) {
+        { children... }
+    }
+}
+
+templ SoftDarkOverlayCard() {
+    @card.Card(softDarkProps) {
         { children... }
     }
 }
