@@ -1,0 +1,11 @@
+package centred_box
+
+import (
+	"github.com/Deirror/templette/components/card"
+)
+
+templ CentredBox() {
+    @card.Card(p) {
+        { children... }
+    }
+}
