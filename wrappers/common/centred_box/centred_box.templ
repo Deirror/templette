@@ -5,7 +5,13 @@ import (
 )
 
 templ CentredBox() {
-    @card.Card(p) {
+    @card.Card(widthProps) {
+        { children... }
+    }
+}
+
+templ FullWidthCentredBox() {
+    @card.Card(fullWidthProps) {
         { children... }
     }
 }

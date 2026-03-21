@@ -5,6 +5,10 @@ import (
 	"github.com/Deirror/templette/props"
 )
 
-var p card.Props = card.Props{
-	Attrs: props.Attrs{}.WithClass("centred-box"),
+var widthProps card.Props = card.Props{
+	Attrs: props.Attrs{}.WithStyle("max-width: 80%; margin: 2rem auto; text-align: center"),
+}
+
+var fullWidthProps card.Props = card.Props{
+	Attrs: props.Attrs{}.WithStyle("max-width: 100%; margin: 2rem auto; text-align: center"),
 }
