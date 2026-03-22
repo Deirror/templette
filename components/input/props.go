@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package input
 
 import (
@@ -20,48 +23,43 @@ type Props struct {
 	Name        string
 	Value       string
 	Placeholder string
-
-	Disabled bool
-	Required bool
-	ReadOnly bool
-	Checked  bool
+	Disabled    bool
+	Required    bool
+	ReadOnly    bool
+	Checked     bool
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs := props.Attrs{}
-
 	attrs = attrs.Merge(p.Attrs)
 	attrs = attrs.Merge(p.Hx.Attrs)
 	attrs = attrs.Merge(p.Aria.Attrs)
 	attrs = attrs.Merge(p.Data.Attrs)
 
 	if p.Type != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("type", p.Type))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Type, p.Type))
 	}
 	if p.Name != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("name", p.Name))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Name, p.Name))
 	}
 	if p.Value != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("value", p.Value))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Value, p.Value))
 	}
 	if p.Placeholder != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("placeholder", p.Placeholder))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Placeholder, p.Placeholder))
 	}
-
-	// boolean attributes
 	if p.Disabled {
-		attrs = attrs.Merge(props.Attrs{}.With("disabled", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Disabled, ""))
 	}
 	if p.Required {
-		attrs = attrs.Merge(props.Attrs{}.With("required", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Required, ""))
 	}
 	if p.ReadOnly {
-		attrs = attrs.Merge(props.Attrs{}.With("readonly", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.ReadOnly, ""))
 	}
 	if p.Checked {
-		attrs = attrs.Merge(props.Attrs{}.With("checked", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Checked, ""))
 	}
 
 	return attrs.AsTemplAttrs()
 }
-

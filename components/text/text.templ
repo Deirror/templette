@@ -1,282 +1,260 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package text
 
 import (
-    propsx "github.com/Deirror/templette/props"
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
 )
 
-templ P(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ P(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <p { p.AsTemplAttrs()... }>
+    @element.Element(element.P, &p) {
         { children... }
-    </p>
+    }
 }
 
-templ H1(props ...Props) { 
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ H1(ps ...Props) { 
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <h1 { p.AsTemplAttrs()... }>
+    @element.Element(element.H1, &p) {
         { children... }
-    </h1> 
+    }
 }
 
-templ H2(props ...Props) { 
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ H2(ps ...Props) { 
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <h2 { p.AsTemplAttrs()... }>
+    @element.Element(element.H2, &p) {
         { children... }
-    </h2> 
+    }
 }
 
+templ H3(ps ...Props) { 
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ H3(props ...Props) { 
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <h3 { p.AsTemplAttrs()... }>
+    @element.Element(element.H3, &p) {
         { children... }
-    </h3> 
+    }
 }
 
+templ H4(ps ...Props) { 
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ H4(props ...Props) { 
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <h4 { p.AsTemplAttrs()... }>
+    @element.Element(element.H4, &p) {
         { children... }
-    </h4> 
+    }
 }
 
+templ H5(ps ...Props) { 
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ H5(props ...Props) { 
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <h5 { p.AsTemplAttrs()... }>
+    @element.Element(element.H5, &p) {
         { children... }
-    </h5> 
+    }
 }
 
+templ H6(ps ...Props) { 
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ H6(props ...Props) { 
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <h6 { p.AsTemplAttrs()... }>
+    @element.Element(element.H6, &p) {
         { children... }
-    </h6> 
+    }
 }
 
+templ Span(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-
-templ Span(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <span { p.AsTemplAttrs()... }>
+    @element.Element(element.Span, &p) {
         { children... }
-    </span>
+    }
 }
 
+templ Pre(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Pre(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <pre { p.AsTemplAttrs()... }>
+    @element.Element(element.Pre, &p) {
         { children... }
-    </pre>
+    }
 }
 
+templ Code(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Code(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <code { p.AsTemplAttrs()... }>
+    @element.Element(element.Code, &p) {
         { children... }
-    </code>
+    }
 }
 
+templ Blockquote(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Blockquote(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <blockquote { p.AsTemplAttrs()... }>
+    @element.Element(element.Blockquote, &p) {
         { children... }
-    </blockquote>
+    }
 }
 
+templ Ul(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Ul(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <ul { p.AsTemplAttrs()... }>
+    @element.Element(element.Ul, &p) {
         { children... }
-    </ul>
+    }
 }
 
+templ Ol(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Ol(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <ol { p.AsTemplAttrs()... }>
+    @element.Element(element.Ol, &p) {
         { children... }
-    </ol>
+    }
 }
 
+templ Li(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Li(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <li { p.AsTemplAttrs()... }>
+    @element.Element(element.Li, &p) {
         { children... }
-    </li>
+    }
 }
 
+templ Dl(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Dl(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <dl { p.AsTemplAttrs()... }>
+    @element.Element(element.Dl, &p) {
         { children... }
-    </dl>
+    }
 }
 
+templ Dt(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Dt(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <dt { p.AsTemplAttrs()... }>
+    @element.Element(element.Dt, &p) {
         { children... }
-    </dt>
+    }
 }
 
+templ Dd(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Dd(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <dd { p.AsTemplAttrs()... }>
+    @element.Element(element.Dd, &p) {
         { children... }
-    </dd>
+    }
 }
 
+templ Strong(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Strong(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <strong { p.AsTemplAttrs()... }>
+    @element.Element(element.Strong, &p) {
         { children... }
-    </strong>
+    }
 }
 
+templ B(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ B(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <b { p.AsTemplAttrs()... }>
+    @element.Element(element.B, &p) {
         { children... }
-    </b>
+    }
 }
 
+templ Em(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Em(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <em { p.AsTemplAttrs()... }>
+    @element.Element(element.Em, &p) {
         { children... }
-    </em>
+    }
 }
 
+templ I(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ I(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <i { p.AsTemplAttrs()... }>
+    @element.Element(element.I, &p) {
         { children... }
-    </i>
+    }
 }
 
+templ Small(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Small(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <small { p.AsTemplAttrs()... }>
+    @element.Element(element.Small, &p) {
         { children... }
-    </small>
+    }
 }
 
+templ Mark(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Mark(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <mark { p.AsTemplAttrs()... }>
+    @element.Element(element.Mark, &p) {
         { children... }
-    </mark>
+    }
 }
 
+templ Del(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Del(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <del { p.AsTemplAttrs()... }>
+    @element.Element(element.Del, &p) {
         { children... }
-    </del>
+    }
 }
 
+templ Abbr(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Abbr(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <abbr { p.AsTemplAttrs()... }>
+    @element.Element(element.Abbr, &p) {
         { children... }
-    </abbr>
+    }
 }
 
+templ Ins(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-templ Ins(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <ins { p.AsTemplAttrs()... }>
+    @element.Element(element.Ins, &p) {
         { children... }
-    </ins>
+    }
+}
+
+templ Kbd(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
+
+    @element.Element(element.Kbd, &p) {
+        { children... }
+    }
+}
+
+templ S(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
+
+    @element.Element(element.S, &p) {
+        { children... }
+    }
 }
 
 
-templ Kbd(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ U(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <kbd { p.AsTemplAttrs()... }>
+    @element.Element(element.U, &p) {
         { children... }
-    </kbd>
+    }
 }
 
 
-templ S(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ Sub(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <s { p.AsTemplAttrs()... }>
+    @element.Element(element.Sub, &p) {
         { children... }
-    </s>
+    }
 }
 
 
-templ U(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ Sup(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <u { p.AsTemplAttrs()... }>
+    @element.Element(element.Sup, &p) {
         { children... }
-    </u>
-}
-
-
-templ Sub(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <sub { p.AsTemplAttrs()... }>
-        { children... }
-    </sub>
-}
-
-
-templ Sup(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
-
-    <sup { p.AsTemplAttrs()... }>
-        { children... }
-    </sup>
+    }
 }

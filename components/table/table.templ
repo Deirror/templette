@@ -1,53 +1,57 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package table
 
 import ( 
-    propsx "github.com/Deirror/templette/props"
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
 )
 
-templ Table(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ Table(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <table { p.AsTemplAttrs()... }>
+    @element.Element(element.Table, &p) {
         { children... }
-    </table>
+    }
 }
 
-templ Body(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ TBody(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <tbody { p.AsTemplAttrs()... }>
+    @element.Element(element.TBody, &p) {
         { children... }
-    </tbody>
+    }
 }
 
-templ Th(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ Th(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <th  { p.AsTemplAttrs()... }>
+    @element.Element(element.Th, &p) {
         { children... }
-    </th>
+    }
 }
 
-templ Td(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ Td(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <td { p.AsTemplAttrs()... }>
+    @element.Element(element.Td, &p) {
         { children... }
-    </td>
+    }
 }
 
-templ Head(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ THead(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <thead { p.AsTemplAttrs()... }>
+    @element.Element(element.THead, &p) {
         { children... }
-    </thead>
+    }
 }
 
-templ Row(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ Tr(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <tr { p.AsTemplAttrs()... }>
+    @element.Element(element.Tr, &p) {
         { children... }
-    </tr>
+    }
 }

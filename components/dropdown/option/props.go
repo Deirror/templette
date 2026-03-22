@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package option
 
 import (
@@ -18,13 +21,13 @@ func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs = attrs.Merge(p.Attrs)
 
 	if p.Value != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("value", p.Value))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Value, p.Value))
 	}
 	if p.Selected {
-		attrs = attrs.Merge(props.Attrs{}.With("selected", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Selected, ""))
 	}
 	if p.Disabled {
-		attrs = attrs.Merge(props.Attrs{}.With("disabled", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Disabled, ""))
 	}
 
 	return attrs.AsTemplAttrs()

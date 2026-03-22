@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package form
 
 import (
@@ -25,33 +28,23 @@ type Props struct {
 
 func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs := props.Attrs{}
-
 	attrs = attrs.Merge(p.Attrs)
-
 	attrs = attrs.Merge(p.Hx.Attrs)
 	attrs = attrs.Merge(p.Aria.Attrs)
 	attrs = attrs.Merge(p.Data.Attrs)
 
-	if p.Action != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("action", p.Action))
-	}
-
 	if p.Method != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("method", p.Method))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Method, p.Method))
 	}
-
 	if p.EncType != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("enctype", p.EncType))
+		attrs = attrs.Merge(props.Attrs{}.With(props.EncType, p.EncType))
 	}
-
 	if p.Target != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("target", p.Target))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Target, p.Target))
 	}
-
 	if p.NoValid {
-		attrs = attrs.Merge(props.Attrs{}.With("novalidate", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.NoValidate, ""))
 	}
 
 	return attrs.AsTemplAttrs()
 }
-

@@ -1,13 +1,17 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package fieldset
 
 import ( 
-    propsx "github.com/Deirror/templette/props"
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
 )
 
-templ Fieldset(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ Fieldset(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <fieldset { p.AsTemplAttrs()... }>
+    @element.Element(element.Fieldset, &p) {
         { children... }
-    </fieldset>
+    }
 }

@@ -78,7 +78,7 @@ func (a Attrs) WithClass(class string) Attrs {
 	return a
 }
 
-// Returns templ attributes for html tags.
+// AsTemplAttrs flattens all nested Props (Aria, Hx, Data, Attrs) into a single set of templ.Attributes.
 func (a Attrs) AsTemplAttrs() templ.Attributes {
 	if a.Attributes == nil {
 		a.Attributes = templ.Attributes{} // initialize nil map

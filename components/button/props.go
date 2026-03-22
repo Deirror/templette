@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package button
 
 import (
@@ -23,7 +26,6 @@ type Props struct {
 
 func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs := props.Attrs{}
-
 	attrs = attrs.Merge(p.Attrs)
 	attrs = attrs.Merge(p.Aria.Attrs)
 	attrs = attrs.Merge(p.Hx.Attrs)
@@ -31,15 +33,15 @@ func (p Props) AsTemplAttrs() templ.Attributes {
 
 	if p.Disabled {
 		attrs = attrs.Merge(props.Attrs{}.
-			With("disabled", ""))
+			With(props.Disabled, ""))
 	}
 	if p.Type != "" {
 		attrs = attrs.Merge(props.Attrs{}.
-			With("type", p.Type))
+			With(props.Type, p.Type))
 	}
 	if p.Href != "" {
 		attrs = attrs.Merge(props.Attrs{}.
-			With("href", p.Href))
+			With(props.Href, p.Href))
 	}
 
 	return attrs.AsTemplAttrs()

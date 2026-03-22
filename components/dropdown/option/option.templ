@@ -1,13 +1,17 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package option
 
 import ( 
-    propsx "github.com/Deirror/templette/props"
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
 )
 
-templ Option(props ...Props) {
-    {{ p := propsx.FirstOrDefault(Props{}, props...) }}
+templ Option(ps ...Props) {
+    {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    <option { p.AsTemplAttrs()... }>
+    @element.Element(element.Option, &p) {
         { children... }
-    </option>
+    }
 }

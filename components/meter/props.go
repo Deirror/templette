@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package meter
 
 import (
@@ -22,21 +25,21 @@ type Props struct {
 func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs := props.Attrs{}.Merge(p.Attrs)
 	attrs = attrs.Merge(props.Attrs{}.
-		With("value", fmt.Sprintf("%g", p.Value)).
-		With("min", fmt.Sprintf("%g", p.Min)).
-		With("max", fmt.Sprintf("%g", p.Max)))
+		With(props.Value, fmt.Sprintf("%g", p.Value)).
+		With(props.Min, fmt.Sprintf("%g", p.Min)).
+		With(props.Max, fmt.Sprintf("%g", p.Max)))
 
 	if p.Low != 0 {
-		attrs = attrs.Merge(props.Attrs{}.With("low", fmt.Sprintf("%g", p.Low)))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Low, fmt.Sprintf("%g", p.Low)))
 	}
 	if p.High != 0 {
-		attrs = attrs.Merge(props.Attrs{}.With("high", fmt.Sprintf("%g", p.High)))
+		attrs = attrs.Merge(props.Attrs{}.With(props.High, fmt.Sprintf("%g", p.High)))
 	}
 	if p.Opt != 0 {
-		attrs = attrs.Merge(props.Attrs{}.With("optimum", fmt.Sprintf("%g", p.Opt)))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Optimum, fmt.Sprintf("%g", p.Opt)))
 	}
 	if p.Label != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("aria-label", p.Label))
+		attrs = attrs.Merge(props.Attrs{}.With(props.AriaLabel, p.Label))
 	}
 
 	return attrs.AsTemplAttrs()
