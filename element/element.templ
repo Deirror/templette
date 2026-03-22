@@ -1,0 +1,42 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+package element
+
+import (
+    "fmt"
+
+    "github.com/Deirror/templette/props"
+)
+
+// Element renders a standard HTML element with a given tag and attributes.
+templ Element(t Tag, prvs ...props.AttrsProvider) {
+    {{ p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...) }}
+
+    {{ attrs := p.AsTemplAttrs() }}
+
+    {{ var html string }}
+    {{ html += "<" + string(t) }}
+    {{ for k, v := range attrs {
+        html += fmt.Sprintf(" %s=\"%v\"", k, v)
+    } }}
+    {{ html += ">" }}
+
+    { html }        // output the opening tag
+        { children... } // insert templ children
+    { "</" + string(t) + ">" } // output the closing tag
+}
+
+// VoidElement renders a self-closing HTML element with a given tag and attributes.
+templ VoidElement(t Tag, prvs ...props.AttrsProvider) {
+    {{ p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...) }}
+
+    {{ attrs := p.AsTemplAttrs() }}
+
+    {{ var html string }}
+    {{ html += "<" + string(t) }}
+    {{ for k, v := range attrs { html += fmt.Sprintf(" %s=\"%v\"", k, v) } }}
+    {{ html += "/>" }}
+
+    { html }
+}

@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package html
 
 import (
@@ -8,6 +11,8 @@ import (
 	"github.com/a-h/templ"
 )
 
+// Props wraps props.Attrs and embeds aria.Props and data.Props to provide
+// a single container for general, ARIA, and data-* attributes for any HTML element.
 type Props struct {
 	props.Attrs
 
@@ -15,6 +20,8 @@ type Props struct {
 	Data data.Props
 }
 
+// AsTemplAttrs combines all underlying attributes and returns templ.Attributes
+// for use in templ elements.
 func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs := props.Attrs{}
 

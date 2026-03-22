@@ -1,15 +1,18 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package head
 
-// Props represents <head> configuration
+// Props represents <head> configuration.
 type Props struct {
-	Title         string    // <title>
-	CSS           []string  // <link rel="stylesheet" href=...>
-	Scripts       []string  // <script src=...></script>
+	Title        string    // <title>
+	CSS          []string  // <link rel="stylesheet" href=...>
+	Scripts      []string  // <script src=...></script>
 	ScriptsDefer []string  // <script src=... defer></script>
-	Icons         []string  // <link rel="icon" href=...>
-	Fonts         []string  // <link rel="stylesheet" href=...> for fonts
-	Meta          []MetaTag // additional <meta> tags
-	UseHTMX       bool      // include htmx
+	Icons        []string  // <link rel="icon" href=...>
+	Fonts        []string  // <link rel="stylesheet" href=...> for fonts
+	Meta         []MetaTag // additional <meta> tags
+	UseHTMX      bool      // include htmx
 }
 
 // Optional helper for meta tags
