@@ -24,7 +24,7 @@ templ Element(t Tag, prvs ...props.AttrsProvider) {
         {{ for k, v := range attrs {
             open += fmt.Sprintf(" %s=\"%s\"", k, html.EscapeString(fmt.Sprint(v)))
         } }}
-        {{ open += ">\n" }}
+        {{ open += ">" }}
 
         @templ.Raw(open) {}
             { children... }
@@ -46,7 +46,7 @@ templ VoidElement(t Tag, prvs ...props.AttrsProvider) {
         {{ for k, v := range attrs {
             open += fmt.Sprintf(" %s=\"%s\"", k, html.EscapeString(fmt.Sprint(v)))
         } }}
-        {{ open += "/>\n" }}
+        {{ open += "/>" }}
 
         @templ.Raw(open) {}
     }
