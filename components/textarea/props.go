@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package textarea
 
 import (
@@ -30,35 +33,31 @@ type Props struct {
 
 func (p Props) AsTemplAttrs() templ.Attributes {
 	attrs := props.Attrs{}
-
 	attrs = attrs.Merge(p.Attrs)
 	attrs = attrs.Merge(p.Hx.Attrs)
 	attrs = attrs.Merge(p.Aria.Attrs)
 	attrs = attrs.Merge(p.Data.Attrs)
 	
-
 	if p.Name != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("name", p.Name))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Name, p.Name))
 	}
 	if p.Placeholder != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("placeholder", p.Placeholder))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Placeholder, p.Placeholder))
 	}
 	if p.Rows > 0 {
-		attrs = attrs.Merge(props.Attrs{}.With("rows", strconv.Itoa(p.Rows)))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Rows, strconv.Itoa(p.Rows)))
 	}
 	if p.Cols > 0 {
-		attrs = attrs.Merge(props.Attrs{}.With("cols", strconv.Itoa(p.Cols)))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Cols, strconv.Itoa(p.Cols)))
 	}
-
-	// boolean attributes
 	if p.Disabled {
-		attrs = attrs.Merge(props.Attrs{}.With("disabled", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Disabled, ""))
 	}
 	if p.Required {
-		attrs = attrs.Merge(props.Attrs{}.With("required", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Required, ""))
 	}
 	if p.ReadOnly {
-		attrs = attrs.Merge(props.Attrs{}.With("readonly", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.ReadOnly, ""))
 	}
 
 	return attrs.AsTemplAttrs()

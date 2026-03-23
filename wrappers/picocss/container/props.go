@@ -1,15 +1,14 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package container
 
 import (
-	"github.com/Deirror/templette/components/card"
-	"github.com/Deirror/templette/components/semantic/nav"
 	"github.com/Deirror/templette/props"
 )
 
-var cardProps card.Props = card.Props{
-	Attrs: props.Attrs{}.WithClass("container"),
-}
+var (
+	Props props.Attrs = props.Attrs{}.WithClass("container") // default container attributes.
 
-var navProps nav.Props = nav.Props{
-	Attrs: props.Attrs{}.WithClass("container"),
-}
+	FluidProps props.Attrs = props.Attrs{}.WithClass("container-fluid") // full-width container
+)

@@ -1,18 +1,41 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package container
 
 import (
-    "github.com/Deirror/templette/components/card"
-    "github.com/Deirror/templette/components/semantic/nav"
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
 )
 
-templ ContainerCard() {
-    @card.Card(pCard) {
+// Container represents a wrapper around Element func 
+// with shared props attrs for all tag types.
+templ Container(t element.Tag, p props.AttrsProvider) {
+    @element.Element(t, p) {
         { children... }
     }
 }
 
-templ ContainerNav() {
-    @nav.Nav(pNav) {
+templ DivContainer() {
+    @Container(element.Div, &Props) {
+        { children... }
+    }
+}
+
+templ NavContainer() {
+    @Container(element.Nav, &Props) {
+        { children... }
+    }
+}
+
+templ DivContainerFluid() {
+    @Container(element.Div, &FluidProps) {
+        { children... }
+    }
+}
+
+templ NavContainerFluid() {
+    @Container(element.Nav, &FluidProps) {
         { children... }
     }
 }

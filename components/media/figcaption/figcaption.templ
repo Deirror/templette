@@ -11,7 +11,7 @@ import (
 templ FigCaption(ps ...Props) {
     {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    @element.Element(element.FigCaption, &p) {
+    @element.Element(element.Figcaption, &p) {
         { children... }
     }
 }

@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package progress
 
 import (
@@ -16,13 +19,14 @@ type Props struct {
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.Attrs{}.Merge(p.Attrs)
+	attrs := props.Attrs{}
+	attrs = attrs.Merge(p.Attrs)
 	attrs = attrs.Merge(props.Attrs{}.
-		With("value", fmt.Sprintf("%g", p.Value)).
-		With("max", fmt.Sprintf("%g", p.Max)))
+		With(props.Value, fmt.Sprintf("%g", p.Value)).
+		With(props.Max, fmt.Sprintf("%g", p.Max)))
 
 	if p.Label != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("aria-label", p.Label))
+		attrs = attrs.Merge(props.Attrs{}.With(props.AriaLabel, p.Label))
 	}
 
 	return attrs.AsTemplAttrs()

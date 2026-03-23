@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package canvas
 
 import (
@@ -15,13 +18,14 @@ type Props struct {
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.Attrs{}.Merge(p.Attrs)
+	attrs := props.Attrs{}
+	attrs = attrs.Merge(p.Attrs)
 
 	if p.Width > 0 {
-		attrs = attrs.Merge(props.Attrs{}.With("width", strconv.Itoa(p.Width)))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Width, strconv.Itoa(p.Width)))
 	}
 	if p.Height > 0 {
-		attrs = attrs.Merge(props.Attrs{}.With("height", strconv.Itoa(p.Height)))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Height, strconv.Itoa(p.Height)))
 	}
 
 	return attrs.AsTemplAttrs()

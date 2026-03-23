@@ -1,3 +1,6 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package video
 
 import (
@@ -17,25 +20,26 @@ type Props struct {
 }
 
 func (p Props) AsTemplAttrs() templ.Attributes {
-	attrs := props.Attrs{}.Merge(p.Attrs)
+	attrs := props.Attrs{}
+	attrs = attrs.Merge(p.Attrs)
 
 	if p.Src != "" {
-		attrs = attrs.Merge(props.Attrs{}.With("src", p.Src))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Src, p.Src))
 	}
 	if p.Controls {
-		attrs = attrs.Merge(props.Attrs{}.With("controls", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Controls, ""))
 	}
 	if p.Autoplay {
-		attrs = attrs.Merge(props.Attrs{}.With("autoplay", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Autoplay, ""))
 	}
 	if p.Loop {
-		attrs = attrs.Merge(props.Attrs{}.With("loop", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Loop, ""))
 	}
 	if p.Muted {
-		attrs = attrs.Merge(props.Attrs{}.With("muted", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.Muted, ""))
 	}
 	if p.PlaysInline {
-		attrs = attrs.Merge(props.Attrs{}.With("playsinline", ""))
+		attrs = attrs.Merge(props.Attrs{}.With(props.PlaysInline, ""))
 	}
 
 	return attrs.AsTemplAttrs()
