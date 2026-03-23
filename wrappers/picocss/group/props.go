@@ -1,16 +1,10 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package group
 
 import (
-	"github.com/Deirror/templette/components/fieldset"
-	"github.com/Deirror/templette/components/card"
-
 	"github.com/Deirror/templette/props"
 )
 
-var fieldsetProps fieldset.Props = fieldset.Props{
-	Attrs: props.Attrs{}.With("role","group"),
-}
-
-var cardProps card.Props = card.Props{
-	Attrs: props.Attrs{}.With("role","group"),
-}
+var Props props.Attrs = props.Attrs{}.With(props.Role, "group")

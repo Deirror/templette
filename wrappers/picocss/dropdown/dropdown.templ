@@ -1,11 +1,23 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package dropdown
 
 import (
-	"github.com/Deirror/templette/components/semantic/details"
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
 )
 
-templ DropdownDetails() {
-    @details.Details(p) {
+// Dropdown represents a wrapper around Element func 
+// with shared props attrs for all tag types.
+templ Dropdown(t element.Tag, p props.AttrsProvider) {
+    @element.Element(t, p) {
+        { children... }
+    }
+}
+
+templ DetailsDropdown() {
+    @Dropdown(element.Details, &Props) {
         { children... }
     }
 }

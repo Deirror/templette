@@ -41,6 +41,7 @@ const (
 	Width       Key = "width"
 	Height      Key = "height"
 	PlaysInline Key = "playsinline"
-	Cols Key = "cols"
-	Rows Key = "rows"
+	Cols        Key = "cols"
+	Rows        Key = "rows"
+	Role        Key = "role"
 )

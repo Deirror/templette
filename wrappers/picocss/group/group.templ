@@ -1,18 +1,29 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package group
 
 import (
-	"github.com/Deirror/templette/components/fieldset"
-	"github.com/Deirror/templette/components/card"
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
 )
 
-templ GroupFieldset() {
-    @fieldset.Fieldset(fieldsetProps) {
+// Group represents a wrapper around Element func 
+// with shared props attrs for all tag types.
+templ Group(t element.Tag, p props.AttrsProvider) {
+    @element.Element(t, p) {
         { children... }
     }
 }
 
-templ GroupCard() {
-    @card.Card(cardProps) {
+templ DivGroup() {
+    @Group(element.Div, &Props) {
+        { children... }
+    }
+}
+
+templ FieldsetGroup() {
+    @Group(element.Fieldset, &Props) {
         { children... }
     }
 }

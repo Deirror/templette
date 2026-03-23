@@ -1,10 +1,10 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package dropdown
 
 import (
-	"github.com/Deirror/templette/components/semantic/details"
 	"github.com/Deirror/templette/props"
 )
 
-var p details.Props = details.Props{
-	Attrs: props.Attrs{}.WithClass("dropdown"),
-}
+var Props props.Attrs = props.Attrs{}.WithClass("dropdown")

@@ -1,0 +1,41 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+package bg_overlay
+
+import (
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
+)
+
+// BgOverlay represents a wrapper around Element func 
+// with shared props attrs for all tag types.
+templ BgOverlay(t element.Tag, p props.AttrsProvider) {
+    @element.Element(t, p) {
+        { children... }
+    }
+}
+
+templ DivBgOverlay() {
+    @BgOverlay(element.Div, &Props) {
+        { children... }
+    }
+}
+
+templ DivSoftBgOverlay() {
+    @BgOverlay(element.Div, &SoftProps) {
+        { children... }
+    }
+}
+
+templ DivDarkBgOverlay() {
+    @BgOverlay(element.Div, &DarkProps) {
+        { children... }
+    }
+}
+
+templ DivXDarkBgOverlay() {
+    @BgOverlay(element.Div, &XDarkProps) {
+        { children... }
+    }
+}

@@ -1,15 +1,10 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package grid
 
 import (
-	"github.com/Deirror/templette/components/card"
-	"github.com/Deirror/templette/components/semantic/nav"
 	"github.com/Deirror/templette/props"
 )
 
-var pCard card.Props = card.Props{
-	Attrs: props.Attrs{}.WithClass("grid"),
-}
-
-var pNav nav.Props = nav.Props{
-	Attrs: props.Attrs{}.WithClass("grid"),
-}
+var Props props.Attrs = props.Attrs{}.WithClass("grid")

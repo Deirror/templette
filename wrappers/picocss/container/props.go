@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	Props props.Attrs = props.Attrs{}.WithClass("container") // default container attributes.
+	Props props.Attrs = props.Attrs{}.WithClass("container") // default container attributes
 
 	FluidProps props.Attrs = props.Attrs{}.WithClass("container-fluid") // full-width container
 )
