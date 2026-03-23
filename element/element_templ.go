@@ -16,6 +16,7 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"fmt"
+	"html"
 
 	"github.com/Deirror/templette/props"
 )
@@ -42,35 +43,36 @@ func Element(t Tag, prvs ...props.AttrsProvider) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...)
-		attrs := p.AsTemplAttrs()
-		var html string
-		html += "<" + string(t)
-		for k, v := range attrs {
-			html += fmt.Sprintf(" %s=\"%v\"", k, v)
-		}
-		html += ">"
-		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(html)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `element/element.templ`, Line: 25, Col: 10}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var3 string
-		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("</" + string(t) + ">")
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `element/element.templ`, Line: 27, Col: 28}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
+		if !t.IsValid() {
+		} else {
+			p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...)
+			attrs := p.AsTemplAttrs()
+			var open string
+			open += "<" + string(t)
+			for k, v := range attrs {
+				open += fmt.Sprintf(" %s=\"%s\"", k, html.EscapeString(fmt.Sprint(v)))
+			}
+			open += ">\n"
+			templ_7745c5c3_Err = templ.Raw(open).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw("</"+string(t)+">").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		}
 		return nil
 	})
@@ -93,27 +95,25 @@ func VoidElement(t Tag, prvs ...props.AttrsProvider) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var4 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var4 == nil {
-			templ_7745c5c3_Var4 = templ.NopComponent
+		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var2 == nil {
+			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...)
-		attrs := p.AsTemplAttrs()
-		var html string
-		html += "<" + string(t)
-		for k, v := range attrs {
-			html += fmt.Sprintf(" %s=\"%v\"", k, v)
-		}
-		html += "/>"
-		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(html)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `element/element.templ`, Line: 41, Col: 10}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
+		if !t.IsValid() {
+		} else {
+			p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...)
+			attrs := p.AsTemplAttrs()
+			var open string
+			open += "<" + string(t)
+			for k, v := range attrs {
+				open += fmt.Sprintf(" %s=\"%s\"", k, html.EscapeString(fmt.Sprint(v)))
+			}
+			open += "/>\n"
+			templ_7745c5c3_Err = templ.Raw(open).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		}
 		return nil
 	})

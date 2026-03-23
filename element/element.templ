@@ -5,38 +5,49 @@ package element
 
 import (
     "fmt"
+    "html"
 
     "github.com/Deirror/templette/props"
 )
 
 // Element renders a standard HTML element with a given tag and attributes.
 templ Element(t Tag, prvs ...props.AttrsProvider) {
-    {{ p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...) }}
+    if !t.IsValid() {
+        {} // empty invalid html
+    } else {
+        {{ p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...) }}
 
-    {{ attrs := p.AsTemplAttrs() }}
+        {{ attrs := p.AsTemplAttrs() }}
 
-    {{ var html string }}
-    {{ html += "<" + string(t) }}
-    {{ for k, v := range attrs {
-        html += fmt.Sprintf(" %s=\"%v\"", k, v)
-    } }}
-    {{ html += ">" }}
+        {{ var open string }}
+        {{ open += "<" + string(t) }}
+        {{ for k, v := range attrs {
+            open += fmt.Sprintf(" %s=\"%s\"", k, html.EscapeString(fmt.Sprint(v)))
+        } }}
+        {{ open += ">\n" }}
 
-    { html }        // output the opening tag
-        { children... } // insert templ children
-    { "</" + string(t) + ">" } // output the closing tag
+        @templ.Raw(open) {}
+            { children... }
+        @templ.Raw("</" + string(t) + ">") {}
+    }
 }
 
 // VoidElement renders a self-closing HTML element with a given tag and attributes.
 templ VoidElement(t Tag, prvs ...props.AttrsProvider) {
-    {{ p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...) }}
+    if !t.IsValid() {
+        {} // empty invalid html
+    } else {
+        {{ p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...) }}
 
-    {{ attrs := p.AsTemplAttrs() }}
+        {{ attrs := p.AsTemplAttrs() }}
 
-    {{ var html string }}
-    {{ html += "<" + string(t) }}
-    {{ for k, v := range attrs { html += fmt.Sprintf(" %s=\"%v\"", k, v) } }}
-    {{ html += "/>" }}
+        {{ var open string }}
+        {{ open += "<" + string(t) }}
+        {{ for k, v := range attrs {
+            open += fmt.Sprintf(" %s=\"%s\"", k, html.EscapeString(fmt.Sprint(v)))
+        } }}
+        {{ open += "/>\n" }}
 
-    { html }
+        @templ.Raw(open) {}
+    }
 }
