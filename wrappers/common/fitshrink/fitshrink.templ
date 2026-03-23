@@ -1,11 +1,23 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
 package fitshrink
 
 import (
-    "github.com/Deirror/templette/components/card"
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
 )
 
-templ FitShrink() {
-    @card.Card(p) {
+// FitShrink represents a wrapper around Element func 
+// with shared props attrs for all tag types.
+templ FitShrink(t element.Tag, p props.AttrsProvider) {
+    @element.Element(t, p) {
+        { children... }
+    }
+}
+
+templ DivFitShrink() {
+    @FitShrink(element.Div, &Props) {
         { children... }
     }
 }

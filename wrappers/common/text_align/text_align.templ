@@ -1,0 +1,35 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+package text_align
+
+import (
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
+)
+
+// TextAlign represents a wrapper around Element func 
+// with shared props attrs for all tag types.
+templ TextAlign(t element.Tag, p props.AttrsProvider) {
+    @element.Element(t, p) {
+        { children... }
+    }
+}
+
+templ DivLeftTextAlign() {
+    @TextAlign(element.Div, &LeftProps) {
+        { children... }
+    }
+}
+
+templ DivCenterTextAlign() {
+    @TextAlign(element.Div, &CenterProps) {
+        { children... }
+    }
+}
+
+templ DivRightTextAlign() {
+    @TextAlign(element.Div, &RightProps) {
+        { children... }
+    }
+}

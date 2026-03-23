@@ -2,4 +2,8 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-package dark_overlay
+// Package bg_overlay provides reusable Background Overlay wrapper components.
+// It defines a generic BgOverlay wrapper around the Element function,
+// allowing different HTML tags to be used with shared props.
+// There are specific implementations for ease of use.
+package bg_overlay
