@@ -4,7 +4,6 @@
 
 // Package head provides helpers for building and configuring HTML <head> elements
 // in templ components.
-//
 // It allows specifying the document title, CSS stylesheets, scripts (normal or deferred),
 // icons, fonts, meta tags, and optional inclusion of htmx attributes.
 package head

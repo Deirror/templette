@@ -4,7 +4,6 @@
 
 // Package page provides helpers for building complete HTML pages
 // using templ components.
-//
 // It combines HTML element attributes, <head> configuration, and <body>
 // attributes into a single Props container. This allows developers to
 // define the full structure of a page, including title, scripts, styles,

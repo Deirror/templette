@@ -41,7 +41,7 @@ func Img(ps ...Props) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		p := props.FirstOrDefault(Props{}, ps...)
-		templ_7745c5c3_Err = element.Element(element.Img, &p).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = element.VoidElement(element.Img, &p).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -11,5 +11,5 @@ import (
 templ Img(ps ...Props) {
     {{ p := props.FirstOrDefault(Props{}, ps...) }}
 
-    @element.Element(element.Img, &p) {}
+    @element.VoidElement(element.Img, &p) {}
 }

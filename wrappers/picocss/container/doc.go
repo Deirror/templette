@@ -2,7 +2,7 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-// Package container provides reusable container components with shared attributes.
+// Package container provides reusable Container components with shared attributes.
 // It defines a generic Container wrapper around the Element function, applying
 // common props such as the "container" class. Specific wrappers like DivContainer
 // and NavContainer use this to render <div> and <nav> elements with the shared attributes
