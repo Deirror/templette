@@ -22,6 +22,8 @@ import (
 	"github.com/Deirror/templette/props"
 )
 
+// Page generates all the HTML tags needed for a page.
+// The children inside are actually components.
 func Page(ps ...Props) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
