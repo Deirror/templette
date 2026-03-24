@@ -15,8 +15,10 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"bytes"
 	"fmt"
 	"html"
+	"strings"
 
 	"github.com/Deirror/templette/props"
 )
@@ -52,24 +54,14 @@ func Element(t Tag, prvs ...props.AttrsProvider) templ.Component {
 			for k, v := range attrs {
 				open += fmt.Sprintf(" %s=\"%s\"", k, html.EscapeString(fmt.Sprint(v)))
 			}
-			open += ">\n"
-			templ_7745c5c3_Err = templ.Raw(open).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " ")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " ")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templ.Raw("</"+string(t)+">").Render(ctx, templ_7745c5c3_Buffer)
+			open += ">"
+			var buf bytes.Buffer
+			_ = templ_7745c5c3_Var1.Render(ctx, &buf)
+			var inner string = buf.String()
+			inner = strings.ReplaceAll(inner, "\n", "")
+			inner = strings.ReplaceAll(inner, "\t", "")
+			inner = strings.TrimSpace(inner)
+			templ_7745c5c3_Err = templ.Raw(open+inner+"</"+string(t)+">").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -109,7 +101,7 @@ func VoidElement(t Tag, prvs ...props.AttrsProvider) templ.Component {
 			for k, v := range attrs {
 				open += fmt.Sprintf(" %s=\"%s\"", k, html.EscapeString(fmt.Sprint(v)))
 			}
-			open += "/>\n"
+			open += "/>"
 			templ_7745c5c3_Err = templ.Raw(open).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err

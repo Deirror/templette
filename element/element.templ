@@ -6,6 +6,8 @@ package element
 import (
     "fmt"
     "html"
+    "strings"
+    "bytes"
 
     "github.com/Deirror/templette/props"
 )
@@ -13,10 +15,9 @@ import (
 // Element renders a standard HTML element with a given tag and attributes.
 templ Element(t Tag, prvs ...props.AttrsProvider) {
     if !t.IsValid() {
-        {} // empty invalid html
+        {}
     } else {
         {{ p := props.FirstOrDefault(props.AttrsProvider(props.EmptyAttrsProvider{}), prvs...) }}
-
         {{ attrs := p.AsTemplAttrs() }}
 
         {{ var open string }}
@@ -26,9 +27,14 @@ templ Element(t Tag, prvs ...props.AttrsProvider) {
         } }}
         {{ open += ">" }}
 
-        @templ.Raw(open) {}
-            { children... }
-        @templ.Raw("</" + string(t) + ">") {}
+        {{ var buf bytes.Buffer }}
+        {{ _ = templ_7745c5c3_Var1.Render(ctx, &buf) }}
+        {{ var inner string = buf.String() }}
+        {{ inner = strings.ReplaceAll(inner, "\n", "") }}
+        {{ inner = strings.ReplaceAll(inner, "\t", "") }}
+        {{ inner = strings.TrimSpace(inner) }}
+
+        @templ.Raw(open + inner + "</" + string(t) + ">")
     }
 }
 
@@ -48,6 +54,6 @@ templ VoidElement(t Tag, prvs ...props.AttrsProvider) {
         } }}
         {{ open += "/>" }}
 
-        @templ.Raw(open) {}
+        @templ.Raw(open)
     }
 }
