@@ -1,0 +1,23 @@
+// Copyright 2025 Deirror. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+package fade_in
+
+import (
+    "github.com/Deirror/templette/element"
+    "github.com/Deirror/templette/props"
+)
+
+// FadeIn represents a wrapper around Element func 
+// with shared props attrs for all tag types.
+templ FadeIn(t element.Tag, p props.AttrsProvider) {
+    @element.Element(t, p) {
+        { children... }
+    }
+}
+
+templ DivFadeIn() {
+    @FadeIn(element.Div, &Props) {
+        { children... }
+    }
+}
