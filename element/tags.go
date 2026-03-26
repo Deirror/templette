@@ -74,6 +74,7 @@ const (
 	Sub        Tag = "sub"
 	Sup        Tag = "sup"
 	Textarea   Tag = "textarea"
+	Br         Tag = "br"
 )
 
 var validTags = map[Tag]struct{}{
@@ -82,7 +83,7 @@ var validTags = map[Tag]struct{}{
 	Meter: {}, Progress: {}, Article: {}, Details: {}, Hr: {}, Nav: {}, Section: {}, Summary: {}, Table: {}, TBody: {},
 	Th: {}, Td: {}, THead: {}, Tr: {}, P: {}, H1: {}, H2: {}, H3: {}, H4: {}, H5: {}, H6: {}, Span: {}, Pre: {}, Code: {},
 	Blockquote: {}, Ul: {}, Ol: {}, Li: {}, Dl: {}, Dt: {}, Dd: {}, Strong: {}, B: {}, Em: {}, I: {}, Small: {}, Mark: {},
-	Del: {}, Abbr: {}, Ins: {}, Kbd: {}, S: {}, U: {}, Sub: {}, Sup: {}, Textarea: {}, HTML: {}, Head: {}, Body: {},
+	Del: {}, Abbr: {}, Ins: {}, Kbd: {}, S: {}, U: {}, Sub: {}, Sup: {}, Textarea: {}, Br: {}, HTML: {}, Head: {}, Body: {},
 }
 
 func (t Tag) IsValid() bool {
